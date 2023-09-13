@@ -3,14 +3,11 @@ import { Linkbutton } from "./Linkbutton";
 import { DataContext } from "../Context";
 
 export const HomeUser = () => {
-
   const data = useContext(DataContext);
 
-  console.log(data);
-
   return (
-    <>
-      <div className="mt-20 mb-20 text-center">
+    <div className=" bg-gray-400">
+      <div className="pt-20 mb-20 text-center">
         <h1 className="text-center text-5xl font-bold">Generation Thailand</h1>
         <p className="text-center text-5xl font-bold">Home - User Sector</p>
       </div>
@@ -30,7 +27,7 @@ export const HomeUser = () => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-50 dark:divide-gray-700 dark:bg-gray-900">
-          {data.map((item,key) => (
+          {data.map((item, key) => (
             <tr key={key}>
               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                 {item.name}
@@ -41,10 +38,10 @@ export const HomeUser = () => {
               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                 {item.position}
               </td>
-            </tr>)
-          )}
+            </tr>
+          ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };

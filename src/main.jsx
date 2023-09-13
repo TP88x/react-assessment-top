@@ -8,9 +8,6 @@ import { HomeUser } from "./components/HomeUser.jsx";
 import { Owner } from "./components/Owner.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import { Context } from "./Context.jsx";
-import { useContext } from "react";
-
-
 
 const router = createBrowserRouter([
   {
@@ -51,9 +48,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Context>
-    <RouterProvider router = { router } />
+    <RouterProvider router={router} />
   </Context>
 );
