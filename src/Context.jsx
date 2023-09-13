@@ -29,19 +29,24 @@ export const Context = ({ children }) => {
   const [data, setData] = useState(mockEmployees);
 
   useEffect(() => {
-    const getData = async () => {
-      const response = await axios.get(
-        "https://jsd5-mock-backend.onrender.com/members"
-      );
-      setData((prevdata) => {
-        return [...response.data, ...prevdata];
-      });
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://jsd5-mock-backend.onrender.com/members"
+        );
+        setData((prevdata) => {
+          return [...response.data, ...prevdata];
+        });
+        setReload(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
-    getData();
+    fetchData();
   }, [reload]);
 
   return (
-    <DataContext.Provider value={{ reload, setReload, data }}>
+    <DataContext.Provider value={{ data, reload, setReload }}>
       {children}
     </DataContext.Provider>
   );

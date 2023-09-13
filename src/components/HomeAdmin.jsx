@@ -13,6 +13,7 @@ export const HomeAdmin = () => {
   const [position, setPosition] = useState("");
   const [editId, setEditId] = useState(null);
   const { reload, setReload, data } = useContext(DataContext);
+  const url = "https://jsd5-mock-backend.onrender.com/members";
 
   // Validate
   const isValidate = () => {
@@ -37,8 +38,6 @@ export const HomeAdmin = () => {
     return proceed;
   };
 
-  const url = "https://jsd5-mock-backend.onrender.com/members";
-
   // POST
   const saveData = async () => {
     const id = uuidv4();
@@ -50,11 +49,11 @@ export const HomeAdmin = () => {
           lastname: lastname,
           position: position,
         });
+        console.log("POST", response.status);
         if (response.status === 200) {
           toast.success("Registered successfully.");
           setReload(!reload);
         }
-        console.log("createData", response.status);
       } catch (err) {
         toast.error("Failed: " + err.message);
       }
@@ -67,11 +66,11 @@ export const HomeAdmin = () => {
       const response = await axios.delete(
         `https://jsd5-mock-backend.onrender.com/member/${id}`
       );
+      console.log("DELETE", response.status);
       if (response.status === 200) {
         toast.success("Delete successfully.");
         setReload(!reload);
       }
-      console.log(response.status);
     } catch (err) {
       toast.error("Failed: " + err.message);
     }
@@ -80,15 +79,18 @@ export const HomeAdmin = () => {
   // DELETE ALL
   const deleteAllData = async () => {
     try {
-      const currentData = await axios.get(url);
-      for (const item of currentData.data) {
+      const response = await axios.get(url);
+      for (const data of response.data) {
         await axios.delete(
-          `https://jsd5-mock-backend.onrender.com/member/${item.id}`
+          `https://jsd5-mock-backend.onrender.com/member/${data.id}`
         );
       }
+      console.log("DELETE ALL", response.status);
       if (response.status === 200) {
         toast.success("Delete ALL successfully.");
-        setReload(!reload);
+        setTimeout(function () {
+          window.location.reload();
+        }, 2000);
       }
     } catch (err) {
       toast.error("Failed: " + err.message);
@@ -109,11 +111,11 @@ export const HomeAdmin = () => {
             position: position,
           }
         );
+        console.log("PUT", response.status);
         if (response.status === 200) {
           toast.success("Update successfully.");
           setReload(!reload);
         }
-        console.log(response.status);
         setEditId(null);
       } catch (err) {
         toast.error("Failed: " + err.message);
