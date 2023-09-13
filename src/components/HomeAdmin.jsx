@@ -69,7 +69,9 @@ export const HomeAdmin = () => {
       console.log("DELETE", response.status);
       if (response.status === 200) {
         toast.success("Delete successfully.");
-        setReload(!reload);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
     } catch (err) {
       toast.error("Failed: " + err.message);
@@ -88,7 +90,7 @@ export const HomeAdmin = () => {
       console.log("DELETE ALL", response.status);
       if (response.status === 200) {
         toast.success("Delete ALL successfully.");
-        setTimeout(function () {
+        setTimeout(() => {
           window.location.reload();
         }, 2000);
       }
