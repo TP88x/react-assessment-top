@@ -2,7 +2,7 @@ import React from "react";
 
 export const Owner = () => {
   return (
-    <div className=" bg-gray-400 h-screen">
+    <div className=" bg-gray-400 min-h-screen">
       <div className="flex-row m-auto w-2/3">
         <h1 className="text-center text-3xl font-bold py-6 ">
           Top - Group D - 55

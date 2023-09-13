@@ -6,7 +6,7 @@ export const HomeUser = () => {
   const data = useContext(DataContext);
 
   return (
-    <div className=" bg-gray-400 h-screen">
+    <div className=" bg-gray-400  min-h-screen pb-10">
       <div className="pt-20 mb-20 text-center">
         <h1 className="text-center text-5xl font-bold">Generation Thailand</h1>
         <p className="text-center text-5xl font-bold">Home - User Sector</p>
