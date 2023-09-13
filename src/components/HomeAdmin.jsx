@@ -11,8 +11,8 @@ export const HomeAdmin = () => {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
   const [position, setPosition] = useState("");
-  const [editId, setEditId] = useState(null); // เพิ่มตัวแปรเพื่อเก็บ ID ที่จะแก้ไข
-  const data = useContext(DataContext);
+  const [editId, setEditId] = useState(null);
+  const { reload, setReload, data } = useContext(DataContext);
 
   // Validate
   const isValidate = () => {
@@ -38,6 +38,7 @@ export const HomeAdmin = () => {
   };
 
   const url = "https://jsd5-mock-backend.onrender.com/members";
+
   // POST
   const saveData = async () => {
     const id = uuidv4();
@@ -49,33 +50,33 @@ export const HomeAdmin = () => {
           lastname: lastname,
           position: position,
         });
-
-        toast.success("Registered successfully.");
-        setTimeout(() => {
-          window.location.reload();
-        }, 4000);
+        if (response.status === 200) {
+          toast.success("Registered successfully.");
+          setReload(!reload);
+        }
         console.log("createData", response.status);
       } catch (err) {
         toast.error("Failed: " + err.message);
       }
     }
   };
-  // DELETE
 
+  // DELETE
   const deleteDate = async (id) => {
     try {
       const response = await axios.delete(
         `https://jsd5-mock-backend.onrender.com/member/${id}`
       );
-      toast.success("Delete successfully.");
-      setTimeout(() => {
-        window.location.reload();
-      }, 4000);
+      if (response.status === 200) {
+        toast.success("Delete successfully.");
+        setReload(!reload);
+      }
       console.log(response.status);
     } catch (err) {
       toast.error("Failed: " + err.message);
     }
   };
+
   // DELETE ALL
   const deleteAllData = async () => {
     try {
@@ -85,10 +86,10 @@ export const HomeAdmin = () => {
           `https://jsd5-mock-backend.onrender.com/member/${item.id}`
         );
       }
-      toast.success("Delete ALL successfully.");
-      setTimeout(() => {
-        window.location.reload();
-      }, 4000);
+      if (response.status === 200) {
+        toast.success("Delete ALL successfully.");
+        setReload(!reload);
+      }
     } catch (err) {
       toast.error("Failed: " + err.message);
     }
@@ -108,10 +109,10 @@ export const HomeAdmin = () => {
             position: position,
           }
         );
-        toast.success("Update successfully.");
-        setTimeout(() => {
-          window.location.reload();
-        }, 4000);
+        if (response.status === 200) {
+          toast.success("Update successfully.");
+          setReload(!reload);
+        }
         console.log(response.status);
         setEditId(null);
       } catch (err) {
@@ -133,25 +134,26 @@ export const HomeAdmin = () => {
         <div className="md:flex justify-between ">
           <input
             onChange={(e) => setName(e.target.value)}
-            className="dark:bg-gray-800 bg-gray-200 mr-3 text-white"
+            className="dark:bg-gray-800 bg-gray-200 mr-3 text-white m-2 md:m-0 p-1"
             type="text"
             placeholder="   Name"
           />
           <input
             onChange={(e) => setLastname(e.target.value)}
-            className="dark:bg-gray-800 bg-gray-200 mr-3 text-white"
+            className="dark:bg-gray-800 bg-gray-200 mr-3 text-white m-2 md:m-0 p-1"
             type="text"
             placeholder="   Last Name"
           />
           <input
             onChange={(e) => setPosition(e.target.value)}
-            className="dark:bg-gray-800 bg-gray-200 mr-3 text-white"
+            className="dark:bg-gray-800 bg-gray-200 mr-3 text-white m-2 md:m-0 p-1"
             type="text"
             placeholder="   Position"
           />
           <button
-            onClick={saveData}
-            className="flex items-center justify-center h-8 w-12 bg-blue-600  rounded font-semibold text-sm text-blue-100 hover:bg-blue-800"
+            onClick={() => saveData()}
+            type="submit"
+            className="flex items-center justify-center h-8 w-12 bg-blue-600  rounded font-semibold text-sm text-blue-100 hover:bg-blue-800 m-2 md:m-0"
           >
             Save
           </button>
@@ -222,11 +224,11 @@ export const HomeAdmin = () => {
               <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 ">
                 {item.id === editId ? (
                   <>
-                    <div className="flex">
+                    <div className="flex ">
                       <input
                         onChange={(e) => setPosition(e.target.value)}
                         value={position}
-                        className=" bg-gray-200 mr-3 text-black h-6"
+                        className=" bg-gray-200 mr-3 text-black h-6 "
                         type="text"
                         placeholder="   Position"
                       />

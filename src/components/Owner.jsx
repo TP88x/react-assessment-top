@@ -9,8 +9,7 @@ export const Owner = () => {
         </h1>
         <img
           className="w-[300px] m-auto"
-          src="https://scontent.fbkk29-7.fna.fbcdn.net/v/t1.18169-9/17862579_1686215861395614_983521564735259237_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=zasxv3IXrBYAX96BzEm&_nc_ht=scontent.fbkk29-7.fna&oh=00_AfCGHDVGti-k7_i4BluAX49DJ_eWdBB5UG6Ffp4zXgIp0A&oe=6528D7C1"
-          alt=""
+          src="https://i.seadn.io/gcs/files/aeac2fd89c5dbfab400b9e21115ea64b.png?auto=format&dpr=1&w=256"
         />
         <p className="text-center font-bold my-5">Short Biography:</p>
         <p className="text-center">

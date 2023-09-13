@@ -3,7 +3,7 @@ import { Linkbutton } from "./Linkbutton";
 import { DataContext } from "../Context";
 
 export const HomeUser = () => {
-  const data = useContext(DataContext);
+  const { data } = useContext(DataContext);
 
   return (
     <div className=" bg-gray-400  min-h-screen pb-10">
