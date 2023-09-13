@@ -39,7 +39,7 @@ export const Context = ({ children }) => {
       });
     };
     getData();
-  }, [reload]);
+  }, []);
   console.log(data);
 
   return (

@@ -53,7 +53,7 @@ export const HomeAdmin = () => {
         toast.success("Registered successfully.");
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 4000);
         console.log("createData", response.status);
       } catch (err) {
         toast.error("Failed: " + err.message);
@@ -70,7 +70,7 @@ export const HomeAdmin = () => {
       toast.success("Delete successfully.");
       setTimeout(() => {
         window.location.reload();
-      }, 3000);
+      }, 4000);
       console.log(response.status);
     } catch (err) {
       toast.error("Failed: " + err.message);
@@ -88,7 +88,7 @@ export const HomeAdmin = () => {
       toast.success("Delete ALL successfully.");
       setTimeout(() => {
         window.location.reload();
-      }, 3000);
+      }, 4000);
     } catch (err) {
       toast.error("Failed: " + err.message);
     }
@@ -111,7 +111,7 @@ export const HomeAdmin = () => {
         toast.success("Update successfully.");
         setTimeout(() => {
           window.location.reload();
-        }, 3000);
+        }, 4000);
         console.log(response.status);
         setEditId(null);
       } catch (err) {
