@@ -80,7 +80,7 @@ export const HomeAdmin = () => {
   };
 
   return (
-    <div className=" bg-gray-400">
+    <div className=" bg-gray-400 h-screen">
       <ToastContainer />
       <div className="pt-20 mb-10 text-center">
         <h1 className="text-center text-5xl font-bold">Generation Thailand</h1>
